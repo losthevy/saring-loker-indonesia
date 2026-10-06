@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SARING LOKER · Periksa Lowongan Sebelum Membalas</title>
+<style>
+:root{--bg:#eef3f2;--card:#fff;--ink:#12302f;--mut:#5d7473;--line:#d8e3e1;--brand:#0b5d5e;--brand2:#e6f2f1;--g:#168a52;--y:#c78a00;--r:#d3352d;--sh:0 18px 50px rgba(11,60,60,.18);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0d1a1a;--card:#152524;--ink:#e6f1ef;--mut:#92aeab;--line:#26403e;--brand:#4cc0bd;--brand2:#1a3534;--g:#3cc88a;--y:#f0b83a;--r:#ff6a60;--sh:0 18px 50px rgba(0,0,0,.5)}}
+:root[data-theme="dark"]{--bg:#0d1a1a;--card:#152524;--ink:#e6f1ef;--mut:#92aeab;--line:#26403e;--brand:#4cc0bd;--brand2:#1a3534;--g:#3cc88a;--y:#f0b83a;--r:#ff6a60;--sh:0 18px 50px rgba(0,0,0,.5)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.wrap{display:grid;grid-template-columns:minmax(0,400px) minmax(0,1fr);gap:28px;max-width:1000px;margin:0 auto;padding:16px;align-items:start}
+.phone{background:var(--card);border-radius:34px;box-shadow:var(--sh);height:min(780px,calc(100dvh - 32px));display:flex;flex-direction:column;overflow:hidden;border:1px solid var(--line);position:relative}
+.top{background:var(--brand);color:#fff;padding:14px 18px 12px;display:flex;justify-content:space-between;align-items:center}
+.top b{letter-spacing:.06em;font-size:15px}.top small{opacity:.85;font-size:11px;display:block}
+.pill{background:rgba(255,255,255,.18);border-radius:99px;padding:3px 10px;font-size:11px}
+main{flex:1;overflow-y:auto;padding:16px}
+.v{display:none}.v.on{display:block;animation:in .25s}
+@keyframes in{from{opacity:0;transform:translateY(6px)}to{opacity:1}}
+h2{font-size:18px;margin:0 0 4px}h3{font-size:14px;margin:18px 0 8px}
+p{margin:0 0 10px}.mut{color:var(--mut);font-size:13px}
+textarea,input[type=text],input:not([type]){width:100%;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);border-radius:14px;padding:12px;font:inherit}
+textarea{min-height:120px;resize:vertical}textarea:focus,input:focus{outline:2px solid var(--brand);border-color:transparent}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}
+.chip{border:1.5px solid var(--line);background:var(--card);color:var(--ink);border-radius:99px;padding:6px 12px;font:inherit;font-size:13px;cursor:pointer}
+.chip i{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px}
+.btn{width:100%;border:0;background:var(--brand);color:var(--card);font:600 15px system-ui,sans-serif;border-radius:14px;padding:13px;cursor:pointer;margin-top:8px}
+.btn:active{transform:scale(.98)}.btn.alt{background:var(--brand2);color:var(--brand)}.btn:disabled{opacity:.5}
+.row{display:flex;justify-content:space-between;gap:8px;align-items:center}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:12px 14px;margin-bottom:10px}
+.s-r{--c:var(--r)}.s-y{--c:var(--y)}.s-g{--c:var(--g)}
+.hero{border:2px solid var(--c);border-radius:20px;padding:16px;text-align:center;background:color-mix(in srgb,var(--c) 9%,var(--card))}
+.dot{width:54px;height:54px;border-radius:50%;background:var(--c);color:#fff;font-size:28px;display:grid;place-items:center;margin:0 auto 8px;font-weight:700}
+.hero h2{color:var(--c)}
+.f{display:grid;grid-template-columns:96px 1fr;gap:4px 10px;font-size:13px}.f dt{color:var(--mut)}.f dd{margin:0;word-break:break-word}
+.miss{color:var(--r)}
+.bar{height:8px;background:var(--line);border-radius:9px;overflow:hidden}.bar span{display:block;height:100%;background:var(--c,var(--brand));transition:width .6s}
+.ck{display:flex;gap:10px}.ck>div:last-child{flex:1}.m{flex:none;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:700;font-size:14px}
+.ok .m{background:var(--g)}.no .m{background:var(--r)}
+.tag{font-size:11px;background:var(--brand2);color:var(--brand);border-radius:6px;padding:1px 7px;white-space:nowrap}
+.fl{display:inline-block;background:color-mix(in srgb,var(--r) 12%,var(--card));color:var(--r);border-radius:8px;padding:2px 9px;font-size:12px;margin:0 4px 4px 0}
+.scan div{padding:8px 0;color:var(--mut);opacity:0;animation:in .3s forwards}.scan b{color:var(--brand)}
+nav{display:flex;border-top:1px solid var(--line);background:var(--card)}
+nav button{flex:1;border:0;background:none;color:var(--mut);padding:10px 0 12px;font:600 12px system-ui,sans-serif;cursor:pointer}
+nav button.on{color:var(--brand);box-shadow:inset 0 3px 0 var(--brand)}nav span{display:block;font-size:18px}
+.sheet{position:absolute;inset:0;background:rgba(0,0,0,.45);display:none;align-items:flex-end;z-index:5}
+.sheet.on{display:flex}.sheet>div{background:var(--card);width:100%;border-radius:24px 24px 0 0;padding:18px;max-height:85%;overflow:auto}
+.toast{position:absolute;left:16px;right:16px;bottom:76px;background:var(--ink);color:var(--bg);padding:11px 14px;border-radius:14px;font-size:13px;opacity:0;pointer-events:none;transition:.3s;z-index:6}.toast.on{opacity:1}
+.side h1{font-size:30px;margin:0;color:var(--brand);letter-spacing:.03em}
+.stats{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:12px 0}
+.stats div{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px 4px;text-align:center}.stats b{font-size:22px;display:block}.stats small{color:var(--mut);font-size:11px}
+.how{padding-left:20px}.how li{margin-bottom:6px}
+.q{display:flex;justify-content:space-between;gap:8px;align-items:center;flex-wrap:wrap}
+.q button{border:1.5px solid var(--line);background:var(--card);color:var(--ink);border-radius:9px;padding:4px 10px;cursor:pointer;font-size:12px}
+.st{font-size:11px;border-radius:99px;padding:2px 9px;background:var(--brand2);color:var(--brand)}
+@media(max-width:760px){.wrap{grid-template-columns:1fr;padding:0;gap:16px}.phone{border-radius:0;height:calc(100dvh - 8px);border:0}.side{padding:0 16px 24px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<section class="phone" aria-label="Aplikasi SARING LOKER">
+ <div class="top"><div><b>SARING LOKER</b><small>Kanal resmi KP2MI · demo</small></div><span class="pill">Identitas tidak disimpan</span></div>
+ <main id="main">
+  <div class="v on" id="v-cek">
+   <h2>Periksa dulu, baru balas</h2>
+   <p class="mut">Tempel teks lowongan dari Facebook, Telegram, atau WhatsApp. Sistem mencocokkannya dengan register negara dan memberi alasan per pasal.</p>
+   <textarea id="ta" maxlength="1200" placeholder="Tempel teks lowongan di sini…"></textarea>
+   <div class="row mut"><span id="cnt">0/1200</span><button class="chip" data-act="clr">Bersihkan</button></div>
+   <div class="mut">Coba contoh data fiktif:</div>
+   <div class="chips"><button class="chip" data-act="ex" data-i="g"><i style="background:var(--g)"></i>Hijau</button><button class="chip" data-act="ex" data-i="y"><i style="background:var(--y)"></i>Kuning</button><button class="chip" data-act="ex" data-i="r"><i style="background:var(--r)"></i>Merah</button></div>
+   <button class="btn" data-act="run">Saring sekarang</button>
+   <div id="out"></div>
+  </div>
+  <div class="v" id="v-riw"><h2>Riwayat pemeriksaan</h2><p class="mut">Tersimpan hanya selama sesi ini. Ketuk untuk membuka lagi.</p><div id="hist"></div></div>
+  <div class="v" id="v-res"><h2>Lowongan resmi SISKOP2MI</h2><p class="mut">Contoh daftar fiktif. Pilih negara, cek syarat, lalu siapkan bekalnya.</p><div class="chips" id="cf"></div><div id="offs"></div></div>
+  <div class="v" id="v-hak">
+   <h2>Hak Anda</h2>
+   <div class="card">✔ Tahu alasan setiap status, lengkap dengan pasalnya<br>✔ Status kuning diputus petugas, bukan mesin<br>✔ Dapat mengajukan keberatan<br>✔ Hanya teks iklan yang diproses (UU 27/2022)</div>
+   <h3>Ajukan keberatan</h3>
+   <p class="mut">Lowongan sah tetapi ditandai merah atau kuning? Petugas KP2MI yang meninjau.</p>
+   <input id="ob1" placeholder="Nama perekrut atau perusahaan"><br><br>
+   <textarea id="ob2" style="min-height:80px" placeholder="Alasan keberatan"></textarea>
+   <button class="btn" data-act="obj">Kirim keberatan</button>
+   <h3>Kanal lain</h3><p class="mut">Tanpa ponsel pintar? Hubungi layanan pengaduan KP2MI atau Disnaker setempat.</p>
+  </div>
+ </main>
+ <nav><button class="on" data-act="tab" data-t="cek"><span>🔎</span>Periksa</button><button data-act="tab" data-t="riw"><span>🕘</span>Riwayat</button><button data-act="tab" data-t="res"><span>📋</span>Resmi</button><button data-act="tab" data-t="hak"><span>🛡️</span>Hak</button></nav>
+ <div class="sheet" id="sheet"><div id="sh"></div></div>
+ <div class="toast" id="toast"></div>
+</section>
+<aside class="side">
+ <h1>SARING LOKER</h1>
+ <p class="mut">Layanan publik berbasis AI yang memindahkan pemeriksaan dari patroli setelah iklan tayang ke saat pelamar hendak membalas.</p>
+ <ol class="how"><li>Pilih contoh <b>merah</b> lalu tekan Saring. Lihat tiga cek dan alasannya.</li><li>Teruskan sebagai aduan terstruktur, atau kirim contoh <b>kuning</b> ke petugas.</li><li>Di konsol bawah, putuskan sebagai petugas lalu lihat statusnya berubah di Riwayat.</li></ol>
+ <div class="stats" id="stats"></div>
+ <h3>Konsol petugas KP2MI</h3><div id="queue"></div>
+ <h3>Aduan terstruktur ke Komdigi dan IASC</h3><div id="adu"></div>
+ <p class="mut" style="margin-top:18px">Purwarupa untuk esai. Register, perusahaan, dan lowongan hanya contoh fiktif. Pembacaan iklan memakai aturan sederhana sebagai pengganti model AI sungguhan.</p>
+</aside>
+</div>
+<script>
+const $=s=>document.querySelector(s),esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])),cap=s=>s.replace(/\b\w/g,c=>c.toUpperCase());
+const EX={g:"Program G to G Korea Selatan 2026, kuota 2.000 pekerja sektor manufaktur dan perikanan. Pendaftaran resmi lewat SISKOP2MI oleh KP2MI. Syarat usia 18 sampai 39 tahun dan lulus uji bahasa EPS-TOPIK.",
+y:"Dibuka lowongan caregiver Jepang oleh PT Bina Karya Samudra. Gaji ¥200.000. Hubungi WA 0812-3456-7890. Biaya pelatihan Rp3.000.000. Usia 21 sampai 35 tahun.",
+r:"DICARI Operator E-commerce di Kamboja! Gaji Rp9 juta per bulan, tiket pesawat ditanggung, tanpa pengalaman. Wawancara via Telegram @hrkerja88. Transfer biaya admin Rp1.500.000. Slot terbatas, segera daftar!"};
+const OK=['korea selatan','jepang','taiwan','malaysia','arab saudi','hong kong','singapura'],BAD=['kamboja','myanmar','laos','phnom penh'];
+const CO=[{n:'KP2MI',c:'korea selatan',k:/manufaktur|perikanan|eps/},{n:'PT Sahabat Nusantara Perkasa',c:'taiwan',k:/perawat|caregiver|pabrik/},{n:'PT Bina Karya Samudra',c:'jepang',k:/kapal|pelaut|abk/}];
+const OFF=[
+{id:0,c:'Korea Selatan',t:'G to G: Manufaktur dan Perikanan',k:/manufaktur|perikanan|pabrik|produksi|operator/,req:['Usia 18 sampai 39 tahun','Lulus uji bahasa EPS-TOPIK','Paspor aktif','Surat sehat dan SKCK']},
+{id:1,c:'Taiwan',t:'Caregiver Lansia (PT Sahabat Nusantara Perkasa)',k:/perawat|caregiver|rawat/,req:['Usia 21 sampai 40 tahun','Pelatihan perawat lansia bersertifikat','Paspor aktif','Medical check-up']},
+{id:2,c:'Jepang',t:'ABK Kapal Ikan (PT Bina Karya Samudra)',k:/kapal|pelaut|abk|ikan/,req:['Usia 20 sampai 35 tahun','Buku pelaut dasar','Sertifikat BST','Medical check-up']},
+{id:3,c:'Taiwan',t:'Operator Pabrik Elektronik (PT Sahabat Nusantara Perkasa)',k:/pabrik|operator|produksi|elektronik/,req:['Lulusan SMK atau SMA','Usia 20 sampai 36 tahun','Tes keterampilan dasar','Paspor aktif']}];
+const HEAD={r:['✕','Jangan dibalas dulu','Jangan kirim data, uang, atau paspor. Teruskan sebagai aduan agar orang lain terlindungi.'],y:['!','Perlu diperiksa petugas','Satu cek belum cocok. Tunggu keputusan petugas KP2MI sebelum membalas.'],g:['✓','Cocok dengan register resmi','Daftar hanya lewat SISKOP2MI dan siapkan syarat di bawah.']};
+let H=[],Q=[],A=[],S={n:0,r:0,y:0,g:0,a:0},chk={},cur=null,t0=0,filt='Semua';
+function analyze(t){const l=t.toLowerCase(),f={};
+ const cn=[...OK,...BAD].find(x=>l.includes(x));f.country=cn;
+ const cm=CO.find(c=>l.includes(c.n.toLowerCase())),rx=t.match(/\b(PT|CV)\.? [A-Z]\w*( [A-Z]\w*){0,3}/);
+ f.co=cm?cm.n:rx?rx[0]:null;
+ const j=l.match(/operator [\w-]+|customer service|caregiver|perawat|pelaut|abk|operator|pabrik|manufaktur|perikanan|kapal|admin/);f.job=j?j[0]:null;
+ const p=t.match(/gaji[^\d¥Rr]{0,15}((rp|¥)\s?[\d.,]+(\s?(juta|jt))?)/i);f.pay=p?p[1]:null;
+ const ct=[...new Set(t.match(/@\w+|telegram|whatsapp|\bwa\b|0\d{2,3}[- ]?\d{3,4}[- ]?\d{3,5}/gi)||[])].slice(0,3);f.contact=ct.length?ct.join(', '):null;
+ const fe=t.match(/(biaya|admin|transfer|deposit)[^.]{0,40}?(rp\s?[\d.,]+(\s?(juta|jt|rb))?)/i);f.fee=fe?fe[2]:null;
+ const rq=t.match(/usia[^.]*|eps-?topik|tanpa pengalaman/i);f.req=rq?rq[0].trim():null;
+ const FL=[[/telegram/i,25,'Kontak lewat Telegram'],[f.fee?/./:null,25,'Meminta uang di muka'],[/tanpa pengalaman|tanpa ijazah/i,10,'Tanpa syarat keterampilan'],[/tiket.{0,15}(ditanggung|gratis)/i,10,'Tiket gratis sebagai umpan'],[/e-commerce|customer service/i,10,'Jabatan umpan yang sering dipakai'],[/\b(?:[89]|1\d)[.,]?\d* ?(juta|jt)/i,10,'Gaji tidak wajar'],[/visa (turis|wisata)|paspor wisata/i,15,'Visa non-kerja'],[/segera|terbatas|hari ini/i,5,'Menekan agar cepat membalas']].filter(x=>x[0]&&x[0].test(t));
+ const c1=OK.includes(cn),c2=!!cm,c3=!!cm&&cm.c===cn&&cm.k.test(l);
+ const ch=[{ok:c1,t:'Negara tujuan',p:'Pasal 31',d:c1?`${cap(cn)} termasuk negara penempatan yang memenuhi syarat.`:cn?`${cap(cn)} tidak ditetapkan sebagai negara penempatan. Cek ini mutlak.`:'Negara tujuan tidak disebut atau dirahasiakan, sehingga dicatat gagal.'},
+ {ok:c2,t:'Pelaksana penempatan',p:'Pasal 49 dan 51',d:c2?`${cm.n} terdaftar sebagai pelaksana berizin.`:f.co?`${esc(f.co)} tidak ditemukan pada register izin.`:'Tidak ada nama perusahaan yang dapat dicocokkan.'},
+ {ok:c3,t:'Lowongan terdaftar',p:'Pasal 39 huruf d',d:c3?'Iklan sepadan dengan lowongan di SISKOP2MI.':'Tidak ada lowongan sepadan di SISKOP2MI.'}];
+ const o=(c2?0:1)+(c3?0:1),st=!c1||o>=2?'r':o==1?'y':'g';
+ return{t,f,flags:FL.map(x=>x[2]),score:Math.min(100,FL.reduce((a,x)=>a+x[1],0)),ch,st,pass:ch.filter(x=>x.ok).length,time:new Date().toLocaleTimeString('id-ID',{hour:'2-digit',minute:'2-digit'})}}
+const fld=(v,bad)=>v?esc(v):`<i class="miss">${bad||'tidak dicantumkan'}</i>`;
+function toast(m){const e=$('#toast');e.textContent=m;e.classList.add('on');clearTimeout(e._t);e._t=setTimeout(()=>e.classList.remove('on'),2600)}
+function tab(t){document.querySelectorAll('.v').forEach(v=>v.classList.toggle('on',v.id=='v-'+t));document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('on',b.dataset.t==t));$('#main').scrollTop=0;if(t=='riw')rh();if(t=='res')ro()}
+function chkl(o){const n=o.req.filter((_,i)=>chk[o.id+'_'+i]).length;return`<div class="bar" style="margin:8px 0;--c:var(--g)"><span style="width:${n/o.req.length*100}%"></span></div><div class="mut" style="margin-bottom:4px">${n}/${o.req.length} siap${n==o.req.length?' · siap mendaftar di SISKOP2MI 🎉':''}</div>${o.req.map((q,i)=>`<label style="display:flex;gap:8px;padding:4px 0"><input type="checkbox" data-act="chk" data-k="${o.id}_${i}" data-o="${o.id}" ${chk[o.id+'_'+i]?'checked':''}> ${q}</label>`).join('')}`}
+const cl=o=>`<div class="cl" data-o="${o.id}">${chkl(o)}</div>`;
+const offc=o=>`<div class="card"><div class="row"><div><b>${o.t}</b><div class="mut">${o.c} · terdaftar di SISKOP2MI</div></div><button class="chip" data-act="tg">Syarat</button></div><div hidden>${cl(o)}</div></div>`;
+function near(r){const l=r.t.toLowerCase(),sc=o=>o.k.test(l)*2+(o.c.toLowerCase()==r.f.country);return[...OFF].sort((a,b)=>sc(b)-sc(a)).slice(0,2)}
+function show(r,ns){cur=r;const [i,h,s]=HEAD[r.st],f=r.f,sec=((performance.now()-t0)/1000).toFixed(1).replace('.',',');
+ let x=`<div class="s-${r.st}" style="margin-top:16px"><div class="hero"><div class="dot">${i}</div><h2>${h}</h2><p style="margin:0">${s}</p><div class="mut" style="margin-top:6px">Skor Tiga Cocok ${r.pass}/3</div></div>
+ <h3>Saring-Baca: 7 isian terbaca</h3><div class="card"><dl class="f" style="margin:0"><dt>Perusahaan</dt><dd>${fld(f.co,'tidak ada nama')}</dd><dt>Negara</dt><dd>${f.country?esc(cap(f.country)):'<i class="miss">dirahasiakan</i>'}</dd><dt>Jabatan</dt><dd>${fld(f.job)}</dd><dt>Gaji</dt><dd>${fld(f.pay)}</dd><dt>Syarat</dt><dd>${fld(f.req)}</dd><dt>Kanal kontak</dt><dd>${fld(f.contact)}</dd><dt>Biaya diminta</dt><dd>${f.fee?`<b class="miss">${esc(f.fee)}</b>`:'tidak ada'}</dd></dl></div>
+ <div class="row"><b style="font-size:13px">Pola bahasa iklan palsu</b><b style="color:var(--c)">${r.score}/100</b></div><div class="bar"><span style="width:${r.score}%"></span></div>
+ <div style="margin-top:8px">${r.flags.map(x=>`<span class="fl">${x}</span>`).join('')||'<span class="mut">Tidak ada pola mencurigakan.</span>'}</div>
+ <h3>Saring-Cocok: tiga cek ke register</h3>${r.ch.map(c=>`<div class="card ck ${c.ok?'ok':'no'}"><div class="m">${c.ok?'✓':'✕'}</div><div><div class="row"><b>${c.t}</b><span class="tag">${c.p}</span></div><div class="mut">${c.d}</div></div></div>`).join('')}
+ <h3>Saring-Arah: langkah berikutnya</h3>`;
+ if(r.st=='r')x+=r.tk?`<div class="card">Aduan <b>${r.tk}</b> sudah diteruskan.</div>`:`<button class="btn" data-act="aduan">Teruskan sebagai aduan terstruktur</button>`;
+ if(r.st=='r')x+=`<button class="btn alt" data-act="copy">Salin peringatan untuk teman</button>`;
+ if(r.st=='y')x+=r.tk?`<div class="card">Tiket <b>${r.tk}</b>: <span class="st">${r.dec||'menunggu petugas'}</span></div>`:`<button class="btn" data-act="petugas">Minta periksa petugas KP2MI</button>`;
+ if(r.st=='g'){const o=OFF[0];x+=`<div class="card"><b>Bekal yang perlu disiapkan</b>${cl(o)}</div>`}
+ else x+=`<p class="mut" style="margin-top:12px">Lowongan resmi terdekat dengan yang Anda cari:</p>${near(r).map(offc).join('')}`;
+ $('#out').innerHTML=x+'</div>';if(!ns)setTimeout(()=>$('#out').scrollIntoView({behavior:'smooth'}),50)}
+function ro(){$('#cf').innerHTML=['Semua',...new Set(OFF.map(o=>o.c))].map(c=>`<button class="chip" style="${c==filt?'background:var(--brand);color:var(--card)':''}" data-act="flt" data-c="${c}">${c}</button>`).join('');$('#offs').innerHTML=OFF.filter(o=>filt=='Semua'||o.c==filt).map(offc).join('')}
+function rh(){$('#hist').innerHTML=H.length?H.map((r,i)=>`<div class="card s-${r.st}" data-act="open" data-i="${i}" style="cursor:pointer;border-left:6px solid var(--c)"><div class="row"><b>${HEAD[r.st][1]}</b><span class="mut">${r.time}</span></div><div class="mut">${esc(r.t.slice(0,80))}…</div>${r.tk?`<span class="st">${r.tk}${r.dec?': '+r.dec:''}</span>`:''}</div>`).join(''):'<div class="card mut">Belum ada pemeriksaan.</div>'}
+function side(){$('#stats').innerHTML=[['n','Diperiksa'],['g','Hijau'],['y','Kuning'],['r','Merah'],['a','Aduan']].map(([k,l])=>`<div><b>${S[k]}</b><small>${l}</small></div>`).join('');
+ $('#queue').innerHTML=Q.length?Q.map((q,i)=>`<div class="card q"><div><b>${q.tk}</b> · ${esc(q.r.f.co||'tanpa nama')}<div class="mut">${esc(q.r.f.country?cap(q.r.f.country):'?')} · ${esc(q.r.f.job||'-')} · cek ${q.r.pass}/3</div></div>${q.r.dec?`<span class="st">${q.r.dec}</span>`:`<span><button data-act="dec" data-i="${i}" data-v="Dinyatakan sah">Sah</button> <button data-act="dec" data-i="${i}" data-v="Dinyatakan tidak sah">Tidak sah</button></span>`}</div>`).join(''):'<div class="card mut">Belum ada antrean. Kirim contoh kuning dari ponsel.</div>';
+ $('#adu').innerHTML=A.length?A.map(a=>`<div class="card"><b>${a.no}</b> <span class="st">diteruskan ke Komdigi dan IASC</span><div class="mut">${esc(a.s)}</div></div>`).join(''):'<div class="card mut">Belum ada aduan.</div>'}
+document.addEventListener('click',e=>{const b=e.target.closest('[data-act]');if(!b){if(e.target.id=='sheet')$('#sheet').classList.remove('on');return}
+ const a=b.dataset.act,d=b.dataset;
+ if(a=='tab')tab(d.t);
+ if(a=='clr'){$('#ta').value='';$('#cnt').textContent='0/1200';$('#out').innerHTML=''}
+ if(a=='ex'){$('#ta').value=EX[d.i];$('#cnt').textContent=EX[d.i].length+'/1200';$('#out').innerHTML='';toast('Contoh dimuat. Tekan Saring sekarang.')}
+ if(a=='run'){const t=$('#ta').value.trim();if(t.length<20){toast('Tempel teks lowongan minimal satu kalimat.');return}
+  t0=performance.now();b.disabled=true;$('#out').innerHTML='<div class="scan card" style="margin-top:14px"><div><b>Saring-Baca</b> membaca 7 isian…</div><div style="animation-delay:.5s"><b>Saring-Cocok</b> mengecek register negara…</div><div style="animation-delay:1s"><b>Saring-Arah</b> menyiapkan langkah…</div></div>';
+  setTimeout(()=>{const r=analyze(t);H.unshift(r);S.n++;S[r.st]++;b.disabled=false;show(r);side()},1500)}
+ if(a=='open'){tab('cek');$('#ta').value=H[d.i].t;show(H[d.i])}
+ if(a=='copy'){const m='PERINGATAN: lowongan ini gagal dicocokkan dengan register resmi KP2MI. Jangan kirim data atau uang. Periksa dulu lewat SARING LOKER.';try{navigator.clipboard.writeText(m).then(()=>toast('Peringatan disalin.'),()=>toast('Gagal menyalin.'))}catch(_){toast('Gagal menyalin.')}}
+ if(a=='aduan'){const f=cur.f;$('#sh').innerHTML=`<h2>Kirim aduan?</h2><p class="mut">Hanya data iklan yang dikirim. Identitas Anda tidak ikut.</p><div class="card"><dl class="f" style="margin:0"><dt>Negara</dt><dd>${fld(f.country&&cap(f.country))}</dd><dt>Jabatan</dt><dd>${fld(f.job)}</dd><dt>Kontak</dt><dd>${fld(f.contact)}</dd><dt>Biaya</dt><dd>${fld(f.fee,'tidak ada')}</dd><dt>Dasar</dt><dd>Pasal 31 dan 49 UU 18/2017</dd><dt>Tujuan</dt><dd>Komdigi (turunkan konten), OJK-IASC (rekening)</dd></dl></div><button class="btn" data-act="send">Kirim aduan</button><button class="btn alt" data-act="cls">Batal</button>`;$('#sheet').classList.add('on')}
+ if(a=='cls')$('#sheet').classList.remove('on');
+ if(a=='send'){const no='ADU-'+String(A.length+1).padStart(3,'0');A.unshift({no,s:`${cur.f.job||'iklan'}${cur.f.country?' · '+cap(cur.f.country):''} · ${cur.f.contact||'tanpa kontak'}`});S.a++;cur.tk=no;$('#sheet').classList.remove('on');side();show(cur,1);toast(`Aduan ${no} terkirim. Terima kasih sudah melindungi orang lain.`)}
+ if(a=='petugas'){const tk='TKT-'+String(Q.length+1).padStart(3,'0');cur.tk=tk;Q.unshift({tk,r:cur});side();show(cur,1);toast(`Tiket ${tk} dikirim. Petugas akan meninjau.`)}
+ if(a=='dec'){const q=Q[d.i];q.r.dec=d.v;side();toast('Keputusan petugas dicatat.');if(cur===q.r)show(cur,1)}
+ if(a=='tg'){const x=b.closest('.card').lastElementChild;x.hidden=!x.hidden}
+ if(a=='chk'){chk[d.k]=b.checked;const o=OFF[d.o];document.querySelectorAll(`.cl[data-o="${o.id}"]`).forEach(c=>c.innerHTML=chkl(o))}
+ if(a=='flt'){filt=d.c;ro()}
+ if(a=='obj'){const n=$('#ob1').value.trim(),r=$('#ob2').value.trim();if(!n||r.length<10){toast('Isi nama perekrut dan alasan.');return}$('#ob1').value=$('#ob2').value='';toast('Keberatan terkirim. Ditinjau petugas, bukan mesin.')}
+});
+$('#ta').addEventListener('input',e=>$('#cnt').textContent=e.target.value.length+'/1200');
+side();
+</script>
+</body>
+</html>
